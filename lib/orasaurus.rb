@@ -1,6 +1,6 @@
 module Orasaurus
 
-	def compile
+	def self.compile
 		puts "compile"
 	end
 
