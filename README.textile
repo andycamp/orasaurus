@@ -1,0 +1,5 @@
+h1. Orasaurus
+
+Tools for managing application built with Oracle databases.
+
+Development is just getting started. Check back for more progress and an initial release soon.
