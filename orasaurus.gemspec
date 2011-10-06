@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["pmacydna@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{Tools for building Oracle Applications}
-  s.description = %q{Tools for building Oracle Applications}
+  s.description = %q{A robust interface for building Oracle Applications, especially pl/sql.}
 
   s.rubyforge_project = "orasaurus"
 
