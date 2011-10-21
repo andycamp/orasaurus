@@ -1,7 +1,8 @@
 module Orasaurus
 
-	def self.compile
-		puts "compile"
+	def self.compile(*args)
+		args = *args
+    p args
 	end
 
 end
