@@ -1,8 +1,9 @@
 module Orasaurus
 
-	def self.compile(*args)
-		args = *args
+	def self.sync_build_scripts(*args)
+		args = args
     p args
 	end
 
 end
+
