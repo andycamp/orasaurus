@@ -1,3 +1,4 @@
+
 module Orasaurus
 
 	def self.sync_build_scripts(*args)
@@ -5,5 +6,7 @@ module Orasaurus
     p args
 	end
 
+
 end
 
+require 'orasaurus/sql_script_builder'
