@@ -6,7 +6,7 @@
 		def initialize( base_directory )
 
 			@base_directory = base_directory
-			@ignore_directories = %w( PROJEX appServer Docs AQ InitialMigration bin HelpfulSql Junk Migrations Test Docs lvs_upgrade DataFixes DBSeeds transactionsMigration Analysis free2k )
+			@ignore_directories = %w(  )
 			@ignore_filenames = %w( build.sql teardown.sql build.log teardown.log )
 			@buildable_file_extensions = %w( .pkg .pks .pkb .sql .trg )
 			@build_directories = Array.new
