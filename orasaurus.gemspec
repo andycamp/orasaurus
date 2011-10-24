@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Orasaurus::VERSION
   s.authors     = ["Andy Campbell"]
   s.email       = ["pmacydna@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/andycamp/orasaurus"
   s.summary     = %q{Tools for building Oracle Applications}
   s.description = %q{A robust interface for building Oracle Applications, especially pl/sql.}
 
@@ -21,6 +21,6 @@ Gem::Specification.new do |s|
 
   # specify any dependencies here; for example:
   s.add_development_dependency "rspec"
-  s.add_runtime_dependency "ruby-oci8"
-  s.add_runtime_dependency "ruby-plsql"
+  #s.add_runtime_dependency "ruby-oci8"
+  #s.add_runtime_dependency "ruby-plsql"
 end
