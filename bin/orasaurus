@@ -9,7 +9,7 @@ class OraThauruth < Thor
   map "-v" => :version
   map "-h" => :help  
   
-  desc "generate_build_scripts", "generate mysql build scripts for a directory."   
+  desc "generate_build_scripts", "generate sqlplus build scripts for the current directory."   
   method_options :build_script_name => :string, :teardown_script_name => :string 
   def generate_build_scripts
     build_script_name = options[:build_script_name]||"build.sql"
