@@ -1,4 +1,24 @@
 #!/usr/bin/env ruby
+require 'thor'
 require File.dirname(__FILE__) + '/../lib/orasaurus.rb'
 
-Orasaurus(ARGV)
+class OraThauruth < Thor
+
+  map "-v" => :version
+  map "-h" => :help  
+  
+  desc "generate_build_scripts", "generate mysql build scripts for a directory."   
+  method_options :db_name => :string, :db_user => :string, :db_password => :string 
+  def generate_build_scripts
+    user_alias = options[:alias]
+    puts "generating build scripts"
+  end
+  
+  desc "version", "Currently installed version of Orasaurus."
+  def version
+    puts "Orasarus v"+Orasaurus::VERSION
+  end
+   
+end
+
+OraThauruth.start
