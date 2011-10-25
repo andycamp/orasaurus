@@ -4,14 +4,20 @@ require File.dirname(__FILE__) + '/../lib/orasaurus.rb'
 
 class OraThauruth < Thor
 
+  include Thor::Actions
+  
   map "-v" => :version
   map "-h" => :help  
   
   desc "generate_build_scripts", "generate mysql build scripts for a directory."   
-  method_options :db_name => :string, :db_user => :string, :db_password => :string 
+  method_options :build_script_name => :string, :teardown_script_name => :string 
   def generate_build_scripts
-    user_alias = options[:alias]
-    puts "generating build scripts"
+    build_script_name = options[:build_script_name]||"build.sql"
+    teardown_script_name = options[:teardown_script_name]||"teardown.sql"
+    
+    say "generating build scripts"
+    s = Orasaurus::ScriptBuilder.new( '.' )
+    s.build_all_scripts( build_script_name, teardown_script_name )    
   end
   
   desc "version", "Currently installed version of Orasaurus."

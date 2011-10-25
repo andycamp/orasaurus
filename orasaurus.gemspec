@@ -22,6 +22,5 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   s.add_development_dependency "rspec"
   s.add_runtime_dependency "thor"
-  #s.add_runtime_dependency "ruby-oci8"
-  #s.add_runtime_dependency "ruby-plsql"
+  s.add_runtime_dependency "highline"
 end
