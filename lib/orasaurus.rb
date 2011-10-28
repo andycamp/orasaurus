@@ -12,3 +12,4 @@ end
 require 'orasaurus/sql_script_builder'
 require 'orasaurus/version'
 require 'orasaurus/cli'
+require 'orasaurus/db'

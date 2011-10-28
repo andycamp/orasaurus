@@ -4,11 +4,11 @@ module Orasaurus
 
   module Db
         
-      def compile(connection, sql)
-        puts "oh i'm gonna compile"
-      end
-      
-    end
+    def self.compile(connection, sql)
+      puts "compiling"
+      connection.exec("#{sql}")
+    end      
       
   end
+  
 end
