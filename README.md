@@ -10,8 +10,6 @@ Requirements
 
 To get the most out of the generated scripts, you should have SQL*plus installed and configured for the command-line. [Instructions](http://download.oracle.com/docs/cd/B10501_01/server.920/a90842/ch4.htm).
 
-===========================================================================
-
 Usage
 -----
 
@@ -30,6 +28,4 @@ You can also use the underlying code,as you see fit. The ruby docs are [here](ht
 Coming Soon
 -----------
 
-I will be adding features that will allow Orasaurus to generate the build scripts in the proper order.
-
-Orasaurus will also have code for actually executing the build and evaluating the results (i.e. were there errors).
+I will be adding features that will allow Orasaurus to generate the build scripts in the proper order, configurable options, and automation for executing the build and evaluating the results (i.e. were there errors).
