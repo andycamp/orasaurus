@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe "Orasaurus" do
 
+  before(:all) do
+    cleanup
+  end
+  
   before(:each) do
     @sampleApp = Orasaurus.new("SampleApp",File.dirname(__FILE__) + '/sampleApp')
   end
@@ -32,5 +36,9 @@ describe "Orasaurus" do
     @sampleApp.generate(:teardown_scripts)
     File.exists?(@sampleApp.base_dir+'/Notes/Packages/teardown.sql').should be_true
   end  
+  
+  after(:all) do
+    cleanup
+  end
   
 end

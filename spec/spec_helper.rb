@@ -7,5 +7,7 @@ RSpec.configure do |config|
   # some (optional) config here
 end
 
-puts "deleting all test output files"
-Dir['**/**'].grep(/build\.sql|teardown\.sql/).each { |t| File.delete(t) }
+def cleanup
+  puts "deleting all test output files"
+  Dir['**/**'].grep(/build\.sql|teardown\.sql/).each { |t| File.delete(t) }
+end

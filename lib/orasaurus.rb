@@ -23,8 +23,7 @@ class Orasaurus
   end
   
   def generate(type)
-    case type.to_sym
-    when :build_scripts
+    if [:build_scripts,:teardown_scripts].include? type.to_sym 
       puts "generating #{type}"
       generate_scripts(type)
     else
@@ -55,7 +54,7 @@ class Orasaurus
         when :build_scripts
           Orasaurus::SqlBuildGenerator.new(dir,dir,config.build_file_name,get_build_items(dir)).generate
         when :teardown_scripts
-          Orasaurus::SqlTeardownGenerator.new(dir,dir,config.build_file_name,get_build_items(dir)).generate
+          Orasaurus::SqlTeardownGenerator.new(dir,dir,config.teardown_file_name,get_build_items(dir)).generate
         end
       end
     else 
