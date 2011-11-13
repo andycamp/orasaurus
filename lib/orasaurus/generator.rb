@@ -1,7 +1,7 @@
 require 'find'
 require 'erb'
 
-class Orasaurus
+module Orasaurus
   
   # === A basic class used for generating files.
   

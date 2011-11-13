@@ -1,5 +1,5 @@
 
-class Orasaurus
+module Orasaurus
   
   class Configuration
   

@@ -7,7 +7,7 @@ describe "Orasaurus" do
   end
   
   before(:each) do
-    @sampleApp = Orasaurus.new("SampleApp",File.dirname(__FILE__) + '/sampleApp')
+    @sampleApp = Orasaurus::Application.new("SampleApp",File.dirname(__FILE__) + '/sampleApp')
   end
 
   it "should have a default configuration" do
