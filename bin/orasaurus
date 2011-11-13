@@ -2,29 +2,4 @@
 require 'thor'
 require File.dirname(__FILE__) + '/../lib/orasaurus.rb'
 
-class OraThauruth < Thor
-
-  include Thor::Actions
-  
-  map "-v" => :version
-  map "-h" => :help  
-  
-  desc "generate_build_scripts", "generate sqlplus build scripts for the current directory."   
-  method_options :build_script_name => :string, :teardown_script_name => :string 
-  def generate_build_scripts
-    build_script_name = options[:build_script_name]||"build.sql"
-    teardown_script_name = options[:teardown_script_name]||"teardown.sql"
-    
-    say "generating build scripts"
-    s = Orasaurus::ScriptBuilder.new( '.' )
-    s.build_all_scripts( build_script_name, teardown_script_name )    
-  end
-  
-  desc "version", "Currently installed version of Orasaurus."
-  def version
-    puts "Orasarus v"+Orasaurus::VERSION
-  end
-   
-end
-
-OraThauruth.start
+Orasaurus::CLI.start

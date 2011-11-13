@@ -19,7 +19,7 @@ Install the gem
 
 From the command-line, navigate to the directory that contains your application, then run the following command.
 
-`orasaurus generate_build_scripts`
+`orasaurus generate --build_scripts`
 
 When you run the generator, Orasaurus, examines all directories looking for files with the following extensions: `.pkg, .pks, .pkb, .sql, .trg`. Each of the buildable files is added to a build script that is placed in each directory. These scripts can be generated over and over as you develop.
 
