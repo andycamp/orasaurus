@@ -14,6 +14,8 @@ class Orasaurus
     @config = Orasaurus::Configuration.default
     @build_dirs = fill_build_dirs
     @builders = []
+    puts "Orasaurus has been awakened."
+    puts "Build Dirs: #{@build_dirs.to_s}"
   end
 
   def ignore_filenames
@@ -23,6 +25,7 @@ class Orasaurus
   def generate(type)
     case type.to_sym
     when :build_scripts
+      puts "generating #{type}"
       generate_scripts(type)
     else
       puts "Don't know how to generate " + type.to_s
@@ -41,6 +44,7 @@ class Orasaurus
         buildable_items.push(File.basename(f))
       end		
     end
+    puts "#{dir} build_items: #{buildable_items.to_s}"
     return buildable_items
   end
   

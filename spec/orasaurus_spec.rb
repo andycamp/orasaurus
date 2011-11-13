@@ -25,7 +25,12 @@ describe "Orasaurus" do
   
   it "should be able to generate build scripts" do
     @sampleApp.generate(:build_scripts)
-    File.exists?(@sampleApp.base_dir+'Notes/Packages/build.sql').should be_true
+    File.exists?(@sampleApp.base_dir+'/Notes/Packages/build.sql').should be_true
   end
+  
+  it "should be able to generate teardown scripts" do
+    @sampleApp.generate(:teardown_scripts)
+    File.exists?(@sampleApp.base_dir+'/Notes/Packages/teardown.sql').should be_true
+  end  
   
 end

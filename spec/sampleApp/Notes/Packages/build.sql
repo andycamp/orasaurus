@@ -1,7 +1,7 @@
 
 SET SERVEROUTPUT ON
 SET DEFINE OFF
-SPOOL build.log
+SPOOL build.sql.log
 
 PROMPT
 PROMPT *****************************GETTING STARTED************************
@@ -10,17 +10,17 @@ PROMPT
 BEGIN DBMS_OUTPUT.PUT_LINE( 'BEGIN TIME: '||TO_CHAR( SYSDATE, 'MM/DD/YYYY HH:MI:SS' ) ); END;
 /
 
-PROMPT ***** note_comments_seq.sql *****
-@note_comments_seq.sql;
+PROMPT ***** pkg_note_comments.pkg *****
+@pkg_note_comments.pkg;
 SHOW ERRORS
-PROMPT ***** note_tags_seq.sql *****
-@note_tags_seq.sql;
+PROMPT ***** pkg_note_tags.pkg *****
+@pkg_note_tags.pkg;
 SHOW ERRORS
-PROMPT ***** notebooks_seq.sql *****
-@notebooks_seq.sql;
+PROMPT ***** pkg_notebooks.pkg *****
+@pkg_notebooks.pkg;
 SHOW ERRORS
-PROMPT ***** notes_seq.sql *****
-@notes_seq.sql;
+PROMPT ***** pkg_notes.pkg *****
+@pkg_notes.pkg;
 SHOW ERRORS
 
 BEGIN DBMS_OUTPUT.PUT_LINE( 'END TIME: '||TO_CHAR( SYSDATE, 'MM/DD/YYYY HH:MI:SS' ) ); END;

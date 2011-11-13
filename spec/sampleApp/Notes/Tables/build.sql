@@ -1,7 +1,7 @@
 
 SET SERVEROUTPUT ON
 SET DEFINE OFF
-SPOOL build.log
+SPOOL build.sql.log
 
 PROMPT
 PROMPT *****************************GETTING STARTED************************

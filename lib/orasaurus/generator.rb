@@ -27,7 +27,13 @@ class Orasaurus
 
     def generate
       
-      build_template = %q{
+      if @build_list.empty? then
+        puts "nothing in build list. no need for build file."
+      else
+        
+        puts "processing erb for #{@build_list}"
+      
+        build_template = %q{
 SET SERVEROUTPUT ON
 SET DEFINE OFF
 SPOOL <%=@output_file_name%>.log
@@ -57,10 +63,10 @@ EXIT
     }		
     
     
-      script_contents = ERB.new( build_template, nil, ">" ).result(binding)
-      script_file = File.new( output_file_name, "w" )
-      script_file.print( script_contents )
-      
+        script_contents = ERB.new( build_template, nil, ">" ).result(binding)
+        script_file = File.new( @output_path + '/' + @output_file_name, "w" )
+        script_file.print( script_contents )
+      end
     end
     
   end
@@ -107,7 +113,7 @@ EXIT
     }			
     
       sql_in_clause = ""
-      build_list.each do |i|
+      @build_list.each do |i|
         if i == build_list.first then
           @sql_in_clause.concat( "'" + i.chomp( File.extname( i ) ).upcase + "'" )
         else
@@ -116,7 +122,7 @@ EXIT
       end
     
       script_contents = ERB.new( @teardown_template, nil, ">" ).result(binding)
-      script_file = File.new( output_file_name, "w" )
+      script_file = File.new( @output_file_name, "w" )
       script_file.print( script_contents )
     end		
     
