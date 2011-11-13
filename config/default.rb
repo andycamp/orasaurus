@@ -1,5 +1,5 @@
 
-Orasaurus.config.run do |config|
+Orasaurus.configure do |config|
   
   config.ignore_directories = %w(  )
   config.build_file_name = 'build.sql'

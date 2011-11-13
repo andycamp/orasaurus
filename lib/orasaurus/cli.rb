@@ -1,6 +1,6 @@
 require 'highline'
 
-module Orasaurus
+class Orasaurus
 
   module Cli
   
