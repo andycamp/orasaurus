@@ -25,13 +25,29 @@ module Orasaurus
     map "-h" => :help 
     map "-g" => :generate
 
-    desc "version", "Currently installed version of Orasaurus."
+    desc "generate", "Generate scripts" 
+    method_options :base_dir => :string
+    def generate(script_type=:all)
+      puts "generate " + script_type.to_s + " #{options.base_dir}"
+      a = Orasaurus::Application.new("cli",options.base_dir)
+      
+      if [:build_scripts,:all].include? script_type.to_sym then
+        puts "generating build scrtipts"
+        a.generate(:build_scripts)
+      end
+      
+      if [:teardown_scripts,:all].include? script_type.to_sym then
+        puts "generating teardown scripts"
+        a.generate(:teardown_scripts)
+      end
+      
+    end
+
+    desc "version", "Currently running version of Orasaurus."
     def version
       puts "Orasarus v"+Orasaurus::VERSION
     end
-    
-
-  
+   
   end
 =begin  
   class Generate < Thor::Group 
