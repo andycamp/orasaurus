@@ -19,13 +19,13 @@ Install the gem
 
 From the command-line, navigate to the directory that contains your application, then run the following command.
 
-`orasaurus generate --build_scripts`
+`orasaurus generate path_to_your_code`
 
-When you run the generator, Orasaurus, examines all directories looking for files with the following extensions: `.pkg, .pks, .pkb, .sql, .trg`. Each of the buildable files is added to a build script that is placed in each directory. These scripts can be generated over and over as you develop.
+When you run the generator, Orasaurus, examines all directories looking for files with the following extensions: `.pkg .pks .pkb .sql .trg .prc. fnc .vw`. Each of the buildable files is added to a build script that is placed in each directory. These scripts can be generated over and over as you develop.
 
 You can also use the underlying code,as you see fit. The ruby docs are [here](http://rubydoc.info/gems/orasaurus/0.0.4/frames).
 
 Coming Soon
 -----------
 
-I will be adding features that will allow Orasaurus to generate the build scripts in the proper order, configurable options, and automation for executing the build and evaluating the results (i.e. were there errors).
+I will be adding features that will allow Orasaurus to generate the build scripts in the proper order, and automation for executing the build and evaluating the results (i.e. were there errors).
