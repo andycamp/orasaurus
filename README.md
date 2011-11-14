@@ -25,6 +25,8 @@ When you run the generator, Orasaurus, examines all directories looking for file
 
 You can also use the underlying code,as you see fit. The ruby docs are [here](http://rubydoc.info/gems/orasaurus/0.0.4/frames).
 
+There is command-line help, as well: `orasaurus help`.
+
 Coming Soon
 -----------
 

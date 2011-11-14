@@ -25,8 +25,8 @@ module Orasaurus
     map "-h" => :help 
     map "-g" => :generate
 
-    desc "generate", "Generate scripts" 
-    method_options :base_dir => :string
+    desc "generate [SCRIPT_TYPE]", "Generate scripts. SCRIPT_TYPE is optional. Valid values are build_scripts, teardown_scripts and all." 
+    method_option :base_dir, :type => :string, :default => ".", :desc => "Base Directory for your code. Defaults to your current location.", :optional => true
     def generate(script_type=:all)
       puts "generate " + script_type.to_s + " #{options.base_dir}"
       a = Orasaurus::Application.new("cli",options.base_dir)
