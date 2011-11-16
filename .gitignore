@@ -3,3 +3,6 @@
 Gemfile.lock
 pkg/*
 .DS_Store
+._*
+.vagrant
+Vagrantfile
