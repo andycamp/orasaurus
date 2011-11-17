@@ -50,7 +50,7 @@ module Orasaurus
                 
         final_sql = object_type == 'TABLE' ? tbl_dependency_sql : plsql_dependency_sql
         
-        dependency_list = Array.new
+        dependency_list = []
 
         self.exec(tbl_dependency_sql,object_owner,object_name) do |row|
           dependency_list.push({ :object_name => row[0], :object_type => row[1]||='TABLE'})
@@ -61,6 +61,7 @@ module Orasaurus
       end
       
     end
+    
   
   end
   
