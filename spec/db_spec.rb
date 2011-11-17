@@ -3,6 +3,10 @@ require'oci8'
 
 describe Orasaurus::DB do
 
+  before(:all) do
+    @sampleDB = Orasaurus::DB::Connection.new("ben","franklin")
+  end
+
   describe "#connect" do
     
     it "should be able to connect to the db." do
@@ -13,6 +17,20 @@ describe Orasaurus::DB do
       expect{ Orasaurus::DB::Connection.new("ben","adams") }.to raise_error
     end
     
+  end
+
+  describe "#determine_object_type" do
+  
+    it "should return the appropriate object type." do
+      @sampleDB.determine_object_type('ben','notes').should == 'TABLE'
+      @sampleDB.determine_object_type('ben','junk').should be_nil
+    end
+
+  
+  end
+
+  after(:all) do
+    @sampleDB.logoff
   end
 
 end
