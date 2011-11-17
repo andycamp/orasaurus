@@ -26,7 +26,14 @@ describe Orasaurus::DB do
       @sampleDB.determine_object_type('ben','junk').should be_nil
     end
 
+  end
   
+  describe "#get_dependencies" do
+    
+    it "should return the correct depency list for a table" do
+      @sampleDB.get_dependencies('ben','notes').first[:object_name].should == 'NOTEBOOKS'
+    end
+    
   end
 
   after(:all) do
