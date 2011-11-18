@@ -1,12 +1,17 @@
 require 'orasaurus/configuration'
 require 'orasaurus/generator'
+require 'orasaurus/db'
 
 module Orasaurus
   
   class Application
     
-    attr_accessor :config,:name,:base_dir, :build_dirs
-  
+    include Orasaurus::DB
+    
+    attr_accessor :config,:name,:base_dir, :build_dirs, :connection
+    
+    @connection = Object.new
+    
     def initialize(name,base_dir)
       @name = name
       if File.directory? base_dir 
@@ -16,9 +21,13 @@ module Orasaurus
       end
       @config = Orasaurus::Configuration.default
       @build_dirs = fill_build_dirs
-      @builders = []
       puts "Orasaurus has been awakened."
       puts "Build Dirs: #{@build_dirs.to_s}"
+    end
+
+    #Connects to the database. Use oci8 args to connect
+    def connect(*args)
+      @connection = Connection.new(*args)
     end
 
     def ignore_filenames
@@ -33,7 +42,7 @@ module Orasaurus
         puts "Don't know how to generate " + type.to_s
       end
     end
-  
+
     def get_build_items(dir)
       buildable_items = Array.new
       search_list = Dir.glob(dir + "/*.*" )
