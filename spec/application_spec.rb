@@ -38,7 +38,12 @@ describe Orasaurus::Application do
       @sampleApp.connection.username.downcase.should == "ben"
     end
   
-    it "should be able to sort items in a directory"
+    it "should be able to sort items in a directory" do
+      @sampleApp.connect("ben","franklin")
+      build_items = @sampleApp.get_build_items(@sampleApp.build_dirs.grep(/Notes\/Tables/).first, { :method => :SQL } )
+      build_items.length.should == 4
+      build_items.should == ["notebooks.sql", "notes.sql","note_tags.sql", "note_comments.sql"]
+    end
   
   end
 

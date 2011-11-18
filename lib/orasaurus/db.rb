@@ -64,6 +64,10 @@ module Orasaurus
     
     module Builder
 
+        def self.strip_item(item)
+          return item.gsub(/\..*$/,'')
+        end
+
         def self.sort(arr,opts={})
         firsts = Array.new
         if tmp = Array.try_convert(opts[:first])
@@ -81,10 +85,12 @@ module Orasaurus
       end
 
       def self.sort_by_sql(arr,dbconnection)
+        puts("*********SORT BY SQL")
         ordered_list = Array.new
         done_collecting = false
         loop_idx = 0
-
+        stripped_items = {}
+        
         while not done_collecting
 
           loop_idx += 1
@@ -93,20 +99,21 @@ module Orasaurus
 
             if not ordered_list.include?(object) then
 
-              dependency_list = dbconnection.get_dependencies(dbconnection.username,object)
+              dependency_list = dbconnection.get_dependencies(dbconnection.username,strip_item(object))
               dependencies = Array.new
-              dependency_list.each{ |i| dependencies.push( i.fetch(:object_name).downcase) }
+              dependency_list.each{ |i| dependencies.push(i.fetch(:object_name).downcase) }
               if dependencies.length == 0 then
                 ordered_list.push(object)
               else
-                matches = ordered_list.select do |item| 
-                  dependencies.include?(item) 
+                matches = ordered_list.select do |match| 
+                  dependencies.include?(strip_item(match)) 
                 end
                 matches = matches.sort
-                if matches.eql?(dependencies)
-                  ordered_list.push( object )
+                if matches.collect{ |m| strip_item(m)}.eql?(dependencies)
+                  ordered_list.push(object)
                 end
               end
+              
             end
           }
 
@@ -115,7 +122,7 @@ module Orasaurus
             puts "done colecting dependency matches. all objects have been collected and matched."
           end
 
-          if loop_idx > 10
+          if loop_idx > 30
             done_collecting = true
             puts "giving up on finishing collection"
             puts "difference (missing ones): "

@@ -37,6 +37,16 @@ describe Orasaurus::DB do
   end
 
   describe Orasaurus::DB::Builder do
+    
+    describe "#strip_item" do
+      
+      it "should be able to strip unwanted chars from the item name" do
+        Orasaurus::DB::Builder.strip_item("test.sql").should == "test"
+        Orasaurus::DB::Builder.strip_item("test.pkg.sql.test").should == "test"
+        Orasaurus::DB::Builder.strip_item("test").should == "test"
+      end
+      
+    end
 
     describe "#sort" do
 
@@ -51,6 +61,7 @@ describe Orasaurus::DB do
 
       it "should be able to sort by sql dependencies." do
         Orasaurus::DB::Builder.sort(["note_comments", "notebooks", "notes"], {:method => :SQL, :db_connection => @sampleDB } ).should == [ "notebooks","notes","note_comments"]
+        Orasaurus::DB::Builder.sort(["note_comments.trash", "notebooks.trash", "notes.trash"], {:method => :SQL, :db_connection => @sampleDB } ).should == [ "notebooks.trash","notes.trash","note_comments.trash"]
       end
 
     end

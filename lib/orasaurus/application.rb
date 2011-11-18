@@ -43,7 +43,7 @@ module Orasaurus
       end
     end
 
-    def get_build_items(dir)
+    def get_build_items(dir,sortOpts={})
       buildable_items = Array.new
       search_list = Dir.glob(dir + "/*.*" )
       search_list.each do |f|
@@ -56,7 +56,8 @@ module Orasaurus
         end		
       end
       puts "#{dir} build_items: #{buildable_items.to_s}"
-      return buildable_items
+      sortOpts[:db_connection] = @connection
+      return Builder.sort(buildable_items,sortOpts)
     end
   
     def generate_scripts(type)
