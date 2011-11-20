@@ -19,15 +19,19 @@ Install the gem
 
 From the command-line, navigate to the directory that contains your application, then run the following command.
 
-`orasaurus generate path_to_your_code`
+`orasaurus generate [script_type]`
 
 When you run the generator, Orasaurus, examines all directories looking for files with the following extensions: `.pkg .pks .pkb .sql .trg .prc. fnc .vw`. Each of the buildable files is added to a build script that is placed in each directory. These scripts can be generated over and over as you develop.
 
-You can also use the underlying code,as you see fit. The ruby docs are [here](http://rubydoc.info/gems/orasaurus/0.0.4/frames).
+There are two kinds of `script_types`: build and teardown. Build scripts are sql\*plus scripts that run the contents of each buildable file into sql\*plus. The teardown scripts attempts to reverse the build scripts by dynamically creating scripts to drop the database objects (this really only works if your filenames are database object names).
+
+If you choose to order your build scripts using sql, you must name your files to match the database object that the files contain. For instance, if you have a table called notes, the DDL for that table should be in a file titled "notes.some_buildable_extension".
+
+You can also use the underlying code,as you see fit.
 
 There is command-line help, as well: `orasaurus help`.
 
 Coming Soon
 -----------
 
-I will be adding features that will allow Orasaurus to generate the build scripts in the proper order, and automation for executing the build and evaluating the results (i.e. were there errors).
+I will be adding features adding automation for executing the build and evaluating the results (i.e. were there errors), a richer interface for customizing builds, and some additional generators for automating the execution of the builds.
