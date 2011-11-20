@@ -71,6 +71,7 @@ EXIT
         script_file = File.new( full_output_file_name, "w" )
         script_file.print( script_contents )
         puts "creating " + full_output_file_name
+        script_file.close
       end
     end
     
@@ -134,6 +135,7 @@ EXIT
         script_file = File.new( full_output_file_name, "w" )
         script_file.print( script_contents )
         puts "creating " + full_output_file_name
+        script_file.close
       end
     end		
     

@@ -34,10 +34,10 @@ module Orasaurus
       files = %w{ @config.build_file_name @config.build_log_file_name @config.teardown_file_name @config.teardown_log_file_name }
     end
   
-    def generate(type)
+    def generate(type,sortOpts={})
       if [:build_scripts,:teardown_scripts].include? type.to_sym 
         puts "generating #{type}"
-        generate_scripts(type)
+        generate_scripts(type,sortOpts)
       else
         puts "Don't know how to generate " + type.to_s
       end
@@ -60,14 +60,14 @@ module Orasaurus
       return Builder.sort(buildable_items,sortOpts)
     end
   
-    def generate_scripts(type)
+    def generate_scripts(type,sortOpts={})
       if @build_dirs.length > 0 then
         @build_dirs.each do |dir|
           case type
           when :build_scripts
-            Orasaurus::SqlBuildGenerator.new(dir,dir,config.build_file_name,get_build_items(dir)).generate
+            Orasaurus::SqlBuildGenerator.new(dir,dir,config.build_file_name,get_build_items(dir,sortOpts)).generate
           when :teardown_scripts
-            Orasaurus::SqlTeardownGenerator.new(dir,dir,config.teardown_file_name,get_build_items(dir)).generate
+            Orasaurus::SqlTeardownGenerator.new(dir,dir,config.teardown_file_name,get_build_items(dir,sortOpts)).generate
           end
         end
       else 

@@ -27,18 +27,30 @@ module Orasaurus
 
     desc "generate [SCRIPT_TYPE]", "Generate scripts. SCRIPT_TYPE is optional. Valid values are build_scripts, teardown_scripts and all." 
     method_option :base_dir, :type => :string, :default => ".", :desc => "Base Directory for your code. Defaults to your current location.", :optional => true
+    method_option :sort_method, :type => :string, :default => :none, :desc => "The method used for ordering the scripts. The only available option other than the default is SQL, which will order the scripts by dependency in the database (assuming the file name is a database object name.", :optional => true
+    method_option :db_name, :type => :string, :desc => "Only needed if order_method is sql.", :optional => true
+    method_option :db_username, :type => :string, :desc => "Only needed if order_method is sql.", :optional => true
+    method_option :db_password, :type => :string, :desc => "Only needed if order_method is sql.", :optional => true
     def generate(script_type=:all)
-      puts "generate " + script_type.to_s + " #{options.base_dir}"
+      puts "generate " + script_type.to_s + " #{options.to_s}"
       a = Orasaurus::Application.new("cli",options.base_dir)
+      
+      if options.sort_method.upcase == "SQL" then
+        puts "connecting for sql sorting."
+        a.connect(options.db_username, options.db_password,options.db_name)
+        sort_options = { :method => :SQL, :db_connection => a.connection }
+      else
+        sort_options = {}  
+      end
       
       if [:build_scripts,:all].include? script_type.to_sym then
         puts "generating build scrtipts"
-        a.generate(:build_scripts)
+        a.generate(:build_scripts, sort_options)
       end
       
       if [:teardown_scripts,:all].include? script_type.to_sym then
         puts "generating teardown scripts"
-        a.generate(:teardown_scripts)
+        a.generate(:teardown_scripts, sort_options)
       end
       
     end
