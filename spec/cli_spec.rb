@@ -49,7 +49,7 @@ describe Orasaurus::CLI do
   end
 
   after(:all) do
-    #cleanup
+    cleanup
   end
   
 end
