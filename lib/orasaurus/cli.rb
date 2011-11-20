@@ -49,7 +49,7 @@ module Orasaurus
       puts "Orasarus v"+Orasaurus::VERSION
     end
     
-    def process_db_connect_options(db_username, db_password, db_name)
+    def process_db_connect_options(db_username=nil, db_password=nil, db_name=nil)
        params = Hash.new
        params[:db_name] = db_name||ask("Database Name? ") { |q| q.echo = true }	  
        params[:db_username] = db_username||ask("Database User? ") { |q| q.echo = true }
