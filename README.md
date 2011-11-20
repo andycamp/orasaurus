@@ -34,4 +34,7 @@ There is command-line help, as well: `orasaurus help`.
 Coming Soon
 -----------
 
-I will be adding features adding automation for executing the build and evaluating the results (i.e. were there errors), a richer interface for customizing builds, and some additional generators for automating the execution of the builds.
+* Framrwork for running build tasks and evaluating the results.
+* A richer interface for customizing builds.
+* More code generators.
+* Custom code templates.
