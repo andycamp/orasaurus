@@ -25,7 +25,7 @@ module Orasaurus
       
       if options.sort_method.upcase == "SQL" then
         puts "connecting for sql sorting."
-        db_connect_options = process_db_connect_options(options.db_username, options.db_password, options,db_name)
+        db_connect_options = process_db_connect_options(options.db_username, options.db_password, options.db_name)
         a.connect(db_connect_options[:db_username], db_connect_options[:db_password],db_connect_options[:db_name])
         sort_options = { :method => :SQL, :db_connection => a.connection }
       else
