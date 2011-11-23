@@ -34,7 +34,7 @@ There is command-line help, as well: `orasaurus help`.
 Coming Soon
 -----------
 
-* Framrwork for running build tasks and evaluating the results.
+* Framework for running build tasks and evaluating the results.
 * A richer interface for customizing builds.
 * More code generators.
 * Custom code templates.
