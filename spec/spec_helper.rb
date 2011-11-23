@@ -4,6 +4,17 @@ require 'bundler/setup'
 require File.dirname(__FILE__) + '/../lib/orasaurus.rb'
 
 RSpec.configure do |config|
+  
+  config.before(:suite) do
+    puts "before suite"
+    system 'cd ' << File.dirname(__FILE__) << '/sampleApp/ && sqlplus system@xe @init_sample.sql'
+  end
+  
+  config.after(:suite) do
+    puts "after suite"
+  end
+  
+  
   # some (optional) config heredef capture(stream)
   #lifted from thor's specs
   def capture(stream)

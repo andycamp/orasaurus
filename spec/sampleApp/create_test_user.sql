@@ -1,4 +1,4 @@
-DROP USER ben;
+DROP USER ben cascade;
 CREATE USER ben IDENTIFIED BY franklin;
 GRANT CONNECT TO ben;
 GRANT DBA TO ben;

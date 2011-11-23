@@ -42,7 +42,8 @@ describe Orasaurus::Application do
       @sampleApp.connect("ben","franklin")
       build_items = @sampleApp.get_build_items(@sampleApp.build_dirs.grep(/Notes\/Tables/).first, { :method => :SQL } )
       build_items.length.should == 4
-      build_items.should == ["notebooks.sql", "notes.sql","note_tags.sql", "note_comments.sql"]
+      build_items[0].should == "notebooks.sql"
+      build_items[1].should == "notes.sql"
     end
   
   end
