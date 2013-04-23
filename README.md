@@ -29,12 +29,5 @@ If you choose to order your build scripts using sql, you must name your files to
 
 You can also use the underlying code,as you see fit.
 
-There is command-line help, as well: `orasaurus help`.
+There is command-line help, as well: `orasaurus help`
 
-Coming Soon
------------
-
-* Framework for running build tasks and evaluating the results.
-* A richer interface for customizing builds.
-* More code generators.
-* Custom code templates.
